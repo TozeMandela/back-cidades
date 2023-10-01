@@ -1,6 +1,7 @@
 import { Request, Response} from 'express';
 import * as yup from 'yup';
 import { validateObj } from '../../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 interface Icidade {
   name_city: string,
@@ -15,5 +16,7 @@ export const createBodyValidate = validateObj((getSchema)=>({
 }));
 
 export const create = async (req: Request<{}, {}, Icidade>, res: Response) => {
-    return res.json({ info: 'Validated'});
+    console.log('Mandelaaaaa');
+
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ info: 'Validated'});
 };
