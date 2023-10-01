@@ -1,0 +1,9 @@
+o modulo http-status-codes -> serve para poder usar letras ao invés de numeros na saida de estatus
+npm i http-status-codes -D
+
+
+o modulo Yup é um modulo muito bom para validações, pois já tras consigo varias formatações ou validações pre prontas
+yarn add yup
+
+yarn add yup
+
