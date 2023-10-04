@@ -5,28 +5,28 @@ import { testServer } from '../jest.setup';
 
 describe('Cidades - GetById', () => {
 
-  it('Busca registro por id', async () => {
+    it('Busca registro por id', async () => {
 
-    const res1 = await testServer
-      .post('/cidades')
-      .send({ nome: 'Caxias do sul' });
+        const res1 = await testServer
+            .post('/cidades/create')
+            .send({ name_city: 'Caxias do sul' });
 
-    expect(res1.statusCode).toEqual(StatusCodes.CREATED);
+        expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
-    const resBuscada = await testServer
-      .get(`/cidades/${res1.body}`)
-      .send();
+        const resBuscada = await testServer
+            .get('/cidades/showOne/1')
+            .send();
 
-    expect(resBuscada.statusCode).toEqual(StatusCodes.OK);
-    expect(resBuscada.body).toHaveProperty('nome');
-  });
-  it('Tenta buscar registro que não existe', async () => {
+        expect(resBuscada.statusCode).toEqual(StatusCodes.OK);
+        expect(resBuscada.body).toHaveProperty('name_city');
+    });
+    it('Tenta buscar registro que não existe', async () => {
 
-    const res1 = await testServer
-      .get('/cidades/99999')
-      .send();
+        const res1 = await testServer
+            .get('/cidades/showOne/99999')
+            .send();
 
-    expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
-    expect(res1.body).toHaveProperty('errors.default');
-  });
+        expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
+        expect(res1.body).toHaveProperty('errors.default');
+    });
 });

@@ -18,5 +18,5 @@ export const createBodyValidate = validateObj((getSchema)=>({
 export const create = async (req: Request<{}, {}, Icidade>, res: Response) => {
     console.log('Mandelaaaaa');
 
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ info: 'Validated'});
+    return res.status(StatusCodes.CREATED).json({ info: '1'});
 };

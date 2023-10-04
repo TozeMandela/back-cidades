@@ -19,5 +19,13 @@ export const getAlldataValidation = validateObj((getSchema)=>({
 }));
 
 export const showAllData = async (req: Request<{}, {}, {}, IqueryProps>, res: Response) => {
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({ info: 'query'});
+    res.setHeader('access-control-expose-headers', 'x-total-count');
+    res.setHeader('x-total-count', 1);
+
+    return res.status(StatusCodes.OK).json([
+        {
+            id: 1,
+            nome: 'Caxias do Sul',
+        }
+    ]);
 };
